@@ -1,0 +1,43 @@
+import React, { createContext, useContext, useEffect, useState } from "react";
+import i18n from "i18next";
+const LanguageContext = createContext();
+export const useLanguage = () => {
+  return useContext(LanguageContext);
+};
+export const LanguageProvider = ({ children }) => {
+  const getLanguageFromUrl = () => {
+    let languageCode;
+    if (window.localStorage.getItem("lang")) {
+      languageCode = window.localStorage.getItem("lang") === "pt" ? "br" : "ar";
+    } else {
+      const url = window.location.href;
+      languageCode = url.split("/")[3];
+    }
+
+    switch (languageCode) {
+      case "br":
+        return "pt-BR";
+      case "ar":
+        return "es-AR";
+      default:
+        return "es";
+    }
+  };
+  const [language, setLanguage] = useState(getLanguageFromUrl);
+  const changeLanguage = (newLanguage) => {
+    i18n.changeLanguage(newLanguage);
+    setLanguage(newLanguage);
+  };
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
+  const contextValue = {
+    language,
+    setLanguage: changeLanguage,
+  };
+  return (
+    <LanguageContext.Provider value={contextValue}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};

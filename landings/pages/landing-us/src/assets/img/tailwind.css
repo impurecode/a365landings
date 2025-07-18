@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply py-2 px-4 rounded;
+}
+
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
+
+.card {
+  @apply rounded overflow-hidden shadow-lg;
+}
+
+.card-shadow {
+  -webkit-box-shadow: 0px 4px 32px 0px rgba(31, 55, 76, 0.2);
+  box-shadow: 0px 4px 32px 0px rgba(31, 55, 76, 0.2);
+  border: 4rem solid 10px !important;
+}
+
+.feature-box-2 {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+}
+
+* {
+  font-family: "Titillium Web", sans-serif;
+}
+
+.swiper-pagination-bullets {
+  bottom: -5px !important;
+}
+
+.home-hero-desktop {
+  clip-path: ellipse(100% 55% at 48% 44%);
+
+  height: 600px;
+  background-image: url("../assets/img/HeroBackground.png");
+  background-size: cover;
+}
+
+.elipse-curve {
+  clip-path: ellipse(100% 55% at 48% 44%);
+}
